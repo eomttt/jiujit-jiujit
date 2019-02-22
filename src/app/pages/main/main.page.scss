@@ -1,0 +1,49 @@
+.main-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  white-space: nowrap;
+}
+
+.main-content {
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.main-content-left {
+  background-color: red;
+}
+
+.main-content-right {
+  background-color: blue;
+}
+
+.main-timer-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.main-timer-button-container {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translateY(-50%);
+}
+
+.main-timer-button-rightcontainer {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.main-timer-button-centercontainer {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
