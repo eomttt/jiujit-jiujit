@@ -10,40 +10,181 @@
   height: 100%;
   display: inline-block;
   vertical-align: top;
+  position: relative;
 }
 
 .main-content-left {
-  background-color: red;
+
 }
 
 .main-content-right {
-  background-color: blue;
+
+}
+
+.mc-r-top {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 50%;
+  background-color: green;
+}
+
+.mc-r-bottom {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 50%;
+  background-color: yellow;
 }
 
 .main-timer-container {
   position: absolute;
-  top: 50%;
+  top: 32.5%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 .main-timer-button-container {
   position: absolute;
-  top: 50%;
-  left: 0%;
-  transform: translateY(-50%);
+  bottom: 5%;
+
 }
 
-.main-timer-button-rightcontainer {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-}
-
-.main-timer-button-centercontainer {
-  position: absolute;
-  top: 10%;
+.tm-button-mid {
   left: 50%;
   transform: translateX(-50%);
 }
+
+.tm-button-left {
+  position: absolute;
+  left: 10%;
+}
+
+.tm-button-right {
+  position: absolute;
+  right: 10%;
+}
+
+.main-score {
+  position: absolute;
+  font-size: 5em;
+}
+
+.ms-sub-score {
+  font-size: 3em;
+}
+
+.ms-left {
+  top: 55%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+}
+
+.ms-sub-left-left {
+  top: 72.5%;
+  left: 40%;
+  color: blue;
+  transform: translate(-50%, -50%);
+}
+
+.ms-sub-left-right {
+  top: 72.5%;
+  left: 70%;
+  color: red;
+  transform: translate(-50%, -50%);
+}
+
+.ms-right {
+  top: 55%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+}
+
+.ms-sub-right-left {
+  top: 72.5%;
+  left: 30%;
+  color: blue;
+  transform: translate(-50%, -50%);
+}
+
+.ms-sub-right-right {
+  top: 72.5%;
+  left: 60%;
+  color: red;
+  transform: translate(-50%, -50%);
+}
+
+.mc-score-right {
+  text-align: right;
+}
+
+.mc-score-text-top {
+  margin-top: 1em;
+}
+
+.score-text-container {
+  top: 1em;
+  left: .5em;
+  position: absolute;
+}
+
+.score-text-container-right {
+  left: initial;
+  right: .5em;
+}
+
+.mc-st-section {
+  margin-top: .5em;
+}
+
+.mc-st-last {
+  margin-top: .3em;
+}
+
+.ad-text-color {
+  color: blue;
+}
+
+.pt-text-color {
+  color: red;
+}
+
+.main-round-container {
+  position: absolute;
+  width: 100%;
+  top: 7%;
+  text-align: center;
+  font-size: 2em;
+}
+
+.tm-button-first {
+  left: 5%;
+}
+
+.tm-button-second {
+  left: 17%;
+}
+
+.tm-button-third {
+  left: 30%;
+}
+
+.tm-button-fourth {
+  right: 35%;
+}
+
+.tm-button-fifth {
+  right: 16%;
+}
+
+.tm-button-sixth {
+  right: 3%;
+}
+
+.main-active-rest-container {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  text-align: center;
+  }
+

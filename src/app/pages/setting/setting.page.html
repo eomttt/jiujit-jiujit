@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <div (click)="clickBackButton()">
+      Back
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="setting-schedule-container">
+    <div class="setting-schedule-content" *ngFor="let round of rounds.list; let i = index">
+      <app-schedule [round]=round [index]=i></app-schedule>
+    </div>
+  </div>
+  <div class="setting-set-schedule-button" (click)="addRound()">
+    <div class="setting-ssb-content">
+      <div class="setting-ssb-text">
+        ADD
+      </div>
+    </div>
+  </div>
+</ion-content>
+<div class="block-loading-view" *ngIf="showAddScheduleModal">
+</div>
+<app-schedule-add (setSchedule)="addSchedule($event)" (cancel)="closeScheduleModal()" *ngIf="showAddScheduleModal"></app-schedule-add>

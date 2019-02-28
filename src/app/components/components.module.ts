@@ -10,7 +10,10 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
 
+import { ScheduleComponent } from './schedule/schedule.component';
+import { ScheduleAddComponent } from './schedule-add/schedule-add.component';
 import { ScoreComponent } from './score/score.component';
 import { ScoreButtonComponent } from './score-button/score-button.component';
 import { ScoreDetailComponent } from './score-detail/score-detail.component';
@@ -20,19 +23,25 @@ import { TimerButtonComponent } from './timer-button/timer-button.component';
 
 @NgModule({
   declarations: [
-      ScoreComponent,
-      ScoreButtonComponent,
-      ScoreDetailComponent,
-      TimerComponent,
-      TimerButtonComponent
+    ScheduleComponent,
+    ScheduleAddComponent,
+    ScoreComponent,
+    ScoreButtonComponent,
+    ScoreDetailComponent,
+    TimerComponent,
+    TimerButtonComponent
   ],
-  imports: [CommonModule, IonicModule],
+  imports: [CommonModule,
+            IonicModule,
+            FormsModule],
   exports: [
-      ScoreComponent,
-      ScoreButtonComponent,
-      ScoreDetailComponent,
-      TimerComponent,
-      TimerButtonComponent
+    ScheduleComponent,
+    ScheduleAddComponent,
+    ScoreComponent,
+    ScoreButtonComponent,
+    ScoreDetailComponent,
+    TimerComponent,
+    TimerButtonComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

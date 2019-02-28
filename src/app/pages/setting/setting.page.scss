@@ -1,0 +1,34 @@
+.setting-set-schedule-button {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  width: 3em;
+  height: 3em;
+  background-color: blue;
+  border-radius: 50%;
+}
+
+.setting-ssb-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.setting-ssb-text {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-weight: bold;
+}
+
+.block-loading-view {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(128, 128, 128, 0.62);
+}

@@ -1,0 +1,13 @@
+<div class="schedule-container" [ngStyle]="setBackgroundColor()">
+  <div class="schedule-content">
+    <div class="schedule-rc-top">
+      TIME: {{setTimeText(round.active)}}
+    </div>
+    <div class="schedule-rc-bottom">
+      REST: {{setTimeText(round.rest)}}
+    </div>
+    <div class="schedule-delete">
+      DELETE
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="schedule-add-container">
+  <div class="schedule-add-content">
+    <div class="schedule-add-c-top">
+      <div class="schedule-add-cc-top">
+        TIME (Active time)
+      </div>
+      <div class="schedule-add-cc-bottom">
+        <div class="schedule-add-time-input">
+          <input type="number" min="0" max="59" [(ngModel)]="activeMin"/>
+        </div>
+        <div class="schedule-add-time-text">
+          MIN
+        </div>
+        <div class="schedule-add-time-input">
+          <input type="number" min="0" max="59" [(ngModel)]="activeSec"/>
+        </div>
+        <div class="schedule-add-time-text">
+          SEC
+        </div>
+      </div>
+    </div>
+    <div class="schedule-add-c-mid">
+      <div class="schedule-add-cc-top">
+        REST (Rest time)
+      </div>
+      <div class="schedule-add-cc-bottom">
+        <div class="schedule-add-time-input">
+          <input type="number" min="0" max="59" [(ngModel)]="restMin"/>
+        </div>
+        <div class="schedule-add-time-text">
+          MIN
+        </div>
+        <div class="schedule-add-time-input">
+          <input type="number" min="0" max="59" [(ngModel)]="restSec"/>
+        </div>
+        <div class="schedule-add-time-text">
+          SEC
+        </div>
+      </div>
+    </div>
+    <div class="schedule-add-c-bottom">
+      <div class="schedule-add-cb-left" (click)="cancelSchedule()">
+        <div class="schedule-add-cb-text">
+          CANCEL
+        </div>
+      </div>
+      <div class="schedule-add-cb-right" (click)="confirmSchedule()">
+        <div class="schedule-add-cb-text">
+          CONFIRM
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

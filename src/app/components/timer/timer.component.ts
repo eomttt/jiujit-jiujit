@@ -11,7 +11,7 @@ export class TimerComponent implements OnInit {
 
   // start, pause, stop
   _mode: any;
-  _maxTime: any;
+  _roundInfo: any;
 
   @Input()
   set mode(data) {
@@ -22,15 +22,15 @@ export class TimerComponent implements OnInit {
   }
 
   @Input()
-  set maxTime(data) {
-    this._maxTime = data;
+  set roundInfo(data) {
+    this._roundInfo = data;
   }
-  get maxTime() {
-    return this._maxTime;
+  get roundInfo() {
+    return this._roundInfo;
   }
 
   @Output()
-  endTime = new EventEmitter();
+  timeout = new EventEmitter();
 
   ngInit = false;
 
@@ -83,25 +83,28 @@ export class TimerComponent implements OnInit {
   }
 
   private _checkTimeout() {
-    this.time = this.time - 1;
-    this._setViewTime();
-
     if (this.time === 0) {
       this._timeoutTimer();
+      return;
     }
+
+    this.time = this.time - 1;
+    this._setViewTime();
   }
 
   private _timeoutTimer() {
-    this._stopTimer();
+    this.timeout.emit();
 
     // TO DO: Add Alarm
   }
 
   private _startTimer() {
-    if (!!this.viewTimer) {
+    if (!!!this.viewTimer) {
       this.viewTimer = setInterval(() => {
         this._checkTimeout();
       }, this.INTERVAL_TIME);
+    } else {
+      console.log('Timer is already exist');
     }
   }
 
@@ -118,13 +121,18 @@ export class TimerComponent implements OnInit {
     if (!!this.viewTimer) {
       clearInterval(this.viewTimer);
       this.viewTimer = null;
+    } else {
+      console.log('Timer is already canceled');
     }
   }
 
   private _initTime() {
-    this.time = parseInt(this.maxTime) * 60;
+    console.log('Init time', this.roundInfo);
+    if (!!this.roundInfo) {
+      this.time = parseInt(this.roundInfo.min) * 60 + parseInt(this.roundInfo.sec);
 
-    this._setViewTime();
+      this._setViewTime();
+    }
   }
 
 }
