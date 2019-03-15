@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>MyApp</name>
+    <name>KeepRoller</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
@@ -86,8 +86,6 @@
     <allow-navigation href="http://192.168.0.36:8100" sessionid="23135efc" />
     <plugin name="cordova-plugin-nativestorage" spec="2.3.2" />
     <allow-navigation href="http://192.168.0.61:8100" sessionid="7a636ffe" />
-    <engine name="ios" spec="4.5.5" />
-    <engine name="android" spec="7.1.4" />
     <plugin name="cordova-plugin-media" spec="5.0.2">
         <variable name="KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE" value="NO" />
     </plugin>
@@ -97,4 +95,6 @@
         <variable name="ADMOB_APP_ID" value="pub-9152190009267204" />
     </plugin>
     <plugin name="cordova-plugin-insomnia" spec="4.3.0" />
+    <engine name="ios" spec="~4.5.5" />
+    <engine name="android" spec="~7.1.4" />
 </widget>
