@@ -124,13 +124,13 @@
 
 .score-text-container {
   top: 1em;
-  left: .5em;
+  left: 10%;
   position: absolute;
 }
 
 .score-text-container-right {
   left: initial;
-  right: .5em;
+  right: 10%;
 }
 
 .mc-st-section {
@@ -151,9 +151,9 @@
 
 .main-round-container {
   position: absolute;
-  width: 100%;
   top: 7%;
-  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 2em;
 }
 
@@ -183,8 +183,20 @@
 
 .main-active-rest-container {
   position: absolute;
-  width: 100%;
   top: 50%;
-  text-align: center;
-  }
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.none-has-round-text {
+  font-size: 2em;
+  font-weight: bolder;
+}
+
+.main-repeat-container {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translateX(-50%);
+}
 

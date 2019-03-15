@@ -6,6 +6,7 @@
   height: 3em;
   background-color: blue;
   border-radius: 50%;
+  box-shadow: 1px 1px 3px black;
 }
 
 .setting-ssb-content {
@@ -32,3 +33,49 @@
   right: 0;
   background-color: rgba(128, 128, 128, 0.62);
 }
+
+.settingpage-toolbar-container {
+  width: 100%;
+  height: 100%;
+  white-space: nowrap;
+}
+
+.settingpage-left-container {
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.settingpage-right-container {
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.settingpage-rc-left {
+  width: 33.3%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+}
+
+.settingpage-rc-mid {
+  width: 33.3%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+}
+
+.settingpage-rc-right {
+  width: 33.3%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+}
+

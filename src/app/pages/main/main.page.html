@@ -2,29 +2,29 @@
     <div class="main-container">
         <div class="main-content main-content-left">
             <div class="score-text-container">
-                <div class="mc-st-last">
+                <div class="mc-st-last" *ngIf="isExistRound()">
                     <app-score-button class="mc-score-text" [scoreText]=SCORE_TEXT.TD (click)="setScore('left', 'main', 2)"></app-score-button>
                     <app-score-button class="mc-score-text" [scoreText]=SCORE_TEXT.SP (click)="setScore('left', 'main', 2)"></app-score-button>
                     <app-score-button class="mc-score-text" [scoreText]=SCORE_TEXT.KB (click)="setScore('left', 'main', 2)"></app-score-button>
                 </div>
-                <div class="mc-st-last">
+                <div class="mc-st-last" *ngIf="isExistRound()">
                     <app-score-button class="mc-score-text" [scoreText]=SCORE_TEXT.GP (click)="setScore('left', 'main', 3)"></app-score-button>
                 </div>
-                <div class="mc-st-last">
+                <div class="mc-st-last" *ngIf="isExistRound()">
                     <app-score-button class="mc-score-text" [scoreText]=SCORE_TEXT.TM (click)="setScore('left', 'main', 4)"></app-score-button>
                     <app-score-button class="mc-score-text" [scoreText]=SCORE_TEXT.BM (click)="setScore('left', 'main', 4)"></app-score-button>
                 </div>
-                <div class="score-sub-text mc-st-section">
+                <div class="score-sub-text mc-st-section" *ngIf="isExistRound()">
                     <app-score-button class="mc-score-text ad-text-color" [scoreText]=SUB_SCORE_TEXT.AD (click)="setScore('left', 'advantage', 1)"></app-score-button>
                     <app-score-button class="mc-score-text pt-text-color" [scoreText]=SUB_SCORE_TEXT.PT (click)="setScore('left', 'panelty', 1)"></app-score-button>
                 </div>
-                <div class="mc-st-last" (click)="cancelLastScore('left')">
+                <div class="mc-st-last" (click)="cancelLastScore('left')" *ngIf="isExistRound()">
                     {{CANCLE_TEXT}}
                 </div>
             </div>
-            <app-score class="main-score ms-left" [score]=scoreInfo.left.main></app-score>
-            <app-score class="main-score ms-sub-score ms-sub-left-left" [score]=scoreInfo.left.advantage></app-score>
-            <app-score class="main-score ms-sub-score ms-sub-left-right" [score]=scoreInfo.left.panelty></app-score>
+            <app-score class="main-score ms-left" [score]=scoreInfo.left.main *ngIf="isExistRound()"></app-score>
+            <app-score class="main-score ms-sub-score ms-sub-left-left" [score]=scoreInfo.left.advantage *ngIf="isExistRound()"></app-score>
+            <app-score class="main-score ms-sub-score ms-sub-left-right" [score]=scoreInfo.left.panelty *ngIf="isExistRound()"></app-score>
         </div>
         <div class="main-content main-content-right">
             <div class="mc-r-top">
@@ -32,44 +32,50 @@
             <div class="mc-r-bottom">
             </div>
             <div class="score-text-container score-text-container-right">
-                <div class="mc-st-last">
+                <div class="mc-st-last" *ngIf="isExistRound()">
                     <app-score-button class="mc-score-text" [scoreText]=SCORE_TEXT.TD (click)="setScore('right', 'main', 2)"></app-score-button>
                     <app-score-button class="mc-score-text" [scoreText]=SCORE_TEXT.SP (click)="setScore('right', 'main', 2)"></app-score-button>
                     <app-score-button class="mc-score-text" [scoreText]=SCORE_TEXT.KB (click)="setScore('right', 'main', 2)"></app-score-button>
                 </div>
-                <div class="mc-st-last">
+                <div class="mc-st-last" *ngIf="isExistRound()">
                     <app-score-button class="mc-score-text" [scoreText]=SCORE_TEXT.GP (click)="setScore('right', 'main', 3)"></app-score-button>
                 </div>
-                <div class="mc-st-last">
+                <div class="mc-st-last" *ngIf="isExistRound()">
                     <app-score-button class="mc-score-text" [scoreText]=SCORE_TEXT.TM (click)="setScore('right', 'main', 4)"></app-score-button>
                     <app-score-button class="mc-score-text" [scoreText]=SCORE_TEXT.BM (click)="setScore('right', 'main', 4)"></app-score-button>
                 </div>
-                <div class="score-sub-text mc-st-section">
+                <div class="score-sub-text mc-st-section" *ngIf="isExistRound()">
                     <app-score-button class="mc-score-text ad-text-color" [scoreText]=SUB_SCORE_TEXT.AD (click)="setScore('right', 'advantage', 1)"></app-score-button>
                     <app-score-button class="mc-score-text pt-text-color" [scoreText]=SUB_SCORE_TEXT.PT (click)="setScore('right', 'panelty', 1)"></app-score-button>
                 </div>
-                <div class="mc-st-last" (click)="cancelLastScore('right')">
+                <div class="mc-st-last" (click)="cancelLastScore('right')" *ngIf="isExistRound()">
                     {{CANCLE_TEXT}}
                 </div>
             </div>
-            <app-score class="main-score ms-right" [score]=scoreInfo.right.main></app-score>
-            <app-score class="main-score ms-sub-score ms-sub-right-left" [score]=scoreInfo.right.advantage></app-score>
-            <app-score class="main-score ms-sub-score ms-sub-right-right" [score]=scoreInfo.right.panelty></app-score>
+            <app-score class="main-score ms-right" [score]=scoreInfo.right.main *ngIf="isExistRound()"></app-score>
+            <app-score class="main-score ms-sub-score ms-sub-right-left" [score]=scoreInfo.right.advantage *ngIf="isExistRound()"></app-score>
+            <app-score class="main-score ms-sub-score ms-sub-right-right" [score]=scoreInfo.right.panelty *ngIf="isExistRound()"></app-score>
         </div>
-        <div class="main-round-container">
-            {{nowRoundCount}}/{{wholeRoundCount}}
+        <div class="main-round-container" *ngIf="isExistRound()">
+            Round {{nowRoundCount}}/{{wholeRoundCount}}
         </div>
-        <div class="main-active-rest-container">
+        <div class="main-active-rest-container" *ngIf="isExistRound()">
             {{setActiveText()}}
         </div>
-        <app-timer class="main-timer-container" [mode]=timerMode [roundInfo]=nowRound (timeout)=stopTimer()></app-timer>
-        <app-timer-button class="main-timer-button-container tm-button-first" [buttonText]=TIMER_BUTTON_TEXT.START (click)=startTimer()></app-timer-button>
-        <app-timer-button class="main-timer-button-container tm-button-second" [buttonText]=TIMER_BUTTON_TEXT.PAUSE (click)=pauseTimer()></app-timer-button>
-        <app-timer-button class="main-timer-button-container tm-button-third" [buttonText]=TIMER_BUTTON_TEXT.STOP (click)=stopTimer()></app-timer-button>
-        <div class="main-timer-button-container tm-button-fourth" (click)="initRound()">
-            CLEAR ROUND
+        <div class="main-repeat-container" *ngIf="isExistRound()">
+            Repeat {{nowRepeatCount}}/{{wholeRepeatCount}}
         </div>
-        <div class="main-timer-button-container tm-button-fifth" (click)="initScore()">
+        <app-timer class="main-timer-container" [mode]=timerMode [roundInfo]=nowRound (timeout)=timeoutTimer() *ngIf="isExistRound()"></app-timer>
+        <div class="main-timer-container none-has-round-text" *ngIf="!isExistRound()">
+            Make schedule in SETTING page
+        </div>
+        <app-timer-button class="main-timer-button-container tm-button-first" [buttonText]=TIMER_BUTTON_TEXT.START (click)=startTimer() *ngIf="isExistRound()"></app-timer-button>
+        <app-timer-button class="main-timer-button-container tm-button-second" [buttonText]=TIMER_BUTTON_TEXT.PAUSE (click)=pauseTimer() *ngIf="isExistRound()"></app-timer-button>
+        <app-timer-button class="main-timer-button-container tm-button-third" [buttonText]=TIMER_BUTTON_TEXT.STOP (click)=stopTimer() *ngIf="isExistRound()"></app-timer-button>
+        <div class="main-timer-button-container tm-button-fourth" (click)="clearSchedule()" *ngIf="isExistRound()">
+            INIT
+        </div>
+        <div class="main-timer-button-container tm-button-fifth" (click)="initScore()" *ngIf="isExistRound()">
             CLEAR SCORE
         </div>
         <div class="main-timer-button-container tm-button-sixth" (click)="openSettingPage()">

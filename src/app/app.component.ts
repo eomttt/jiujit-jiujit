@@ -4,6 +4,7 @@ import { NavController, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 
 import { RoundService } from './services/round.service';
 
@@ -19,6 +20,7 @@ export class AppComponent {
     private screenOrientation: ScreenOrientation,
     private router: Router,
     private navCtrl: NavController,
+    private mobileAccessibility: MobileAccessibility,
     private roundSrv: RoundService
   ) {
     this.initializeApp();
@@ -29,9 +31,7 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      this._setLandscapeView();
-      this._setRounds();
-      this._setBackButtonEvent();
+      this._active();
     });
   }
 
@@ -40,7 +40,7 @@ export class AppComponent {
   }
 
   private _setRounds() {
-    this.roundSrv.setRounds();
+    return this.roundSrv.setRounds();
   }
 
   private _setBackButtonEvent() {
@@ -53,5 +53,25 @@ export class AppComponent {
         this.navCtrl.pop();
       }
     });
+  }
+
+  private _openMainPage() {
+    this.router.navigate(['main']);
+  }
+
+  private _setScreenViewPort() {
+    this.mobileAccessibility.setTextZoom(100);
+    this.mobileAccessibility.usePreferredTextZoom(false);
+  }
+
+  private async _active() {
+    this._setLandscapeView();
+    this._setBackButtonEvent();
+    this._setScreenViewPort();
+    await this._setRounds();
+
+    console.log('Open main page');
+
+    this._openMainPage();
   }
 }

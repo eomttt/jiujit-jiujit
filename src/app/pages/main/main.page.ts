@@ -36,7 +36,8 @@ export class MainPage implements OnInit {
   scoreInfo: any = {};
 
   roundList: any = [];
-  roundRepeat: any = 1;
+  nowRepeatCount: any = 1;
+  wholeRepeatCount: any = 1;
   nowRoundInfo: any = {};
   nowRound: any = null;
   wholeRoundCount: any = 1;
@@ -75,28 +76,29 @@ export class MainPage implements OnInit {
     }
   }
 
-  public initRound() {
+  public clearSchedule() {
     this.stopTimer();
-    this.roundSrv.clearRound();
+
+    this._clearRound();
+    this._clearRepeat();
   }
 
   public startTimer() {
-    if (this.timerMode === 'stop') {
-      this.initScore();
-    }
-
     this.timerMode = 'start';
   }
 
   public stopTimer() {
     this.timerMode = 'stop';
-
-    this._setNextRound();
-    // this.startTimer();
   }
 
   public pauseTimer() {
     this.timerMode = 'pause';
+  }
+
+  public timeoutTimer() {
+    this.timerMode = 'stop';
+
+    this._setNextRound();
   }
 
   /**
@@ -137,25 +139,45 @@ export class MainPage implements OnInit {
     }
   }
 
+  public isExistRound() {
+    return this.roundList.length > 0;
+  }
+
   /*
    * Private function
    */
 
+  private _clearRepeat() {
+    this.roundSrv.clearRepeat();
+    this.nowRepeatCount = this.roundSrv.getNowRepeatCount();
+  }
+
+  private _clearRound() {
+    this.roundSrv.clearRound();
+    this._initRound();
+  }
+
   private _initRound() {
     let roundInfo = this.roundSrv.getRounds();
 
-    this.roundList = roundInfo.list;
-    this.roundRepeat = roundInfo.repeat;
+    this.activeRound = true;
 
+    this.roundList = roundInfo.list;
+
+    this.wholeRepeatCount = roundInfo.repeat;
     this.wholeRoundCount = this.roundList.length;
 
-    this._setRound();
+    if (this.isExistRound()) {
+      this._setRound();
+    } else {
+      // Nothing
+    }
   }
 
   private _setRound() {
     this.nowRoundInfo = null;
 
-    this.nowRoundCount = this.roundSrv.getNowRound();
+    this.nowRoundCount = this.roundSrv.getNowRoundCount();
 
     this.nowRoundInfo = this.roundList[this.nowRoundCount - 1];
 
@@ -168,17 +190,54 @@ export class MainPage implements OnInit {
 
   private _setNextRound() {
     if (this.activeRound) {
-      if (this.nowRoundInfo.rest.min === 0 &&
-          this.nowRoundInfo.rest.sec === 0) {
-        this.roundSrv.setNextRound();
+      if (this._isPassRestRound()) {
+        // Pass
       } else {
         this.activeRound = false;
       }
     } else {
       this.activeRound = true;
+    }
+
+    if (this.activeRound) {
       this.roundSrv.setNextRound();
+
+      if (this._isFinishWholeRound()) {
+        this._clearRound();
+        this.roundSrv.setNextRepeat();
+
+        if (this._isFinishWholeRepeat()) {
+          this.clearSchedule();
+          return;
+        }
+      }
+    }
+
+    if (this.timerMode === 'stop') {
+      this.initScore();
     }
 
     this._setRound();
+    this._startNextRoundTimer();
+  }
+
+  private _isPassRestRound() {
+    return this.nowRoundInfo.rest.min === 0 &&
+           this.nowRoundInfo.rest.sec === 0
+  }
+
+  private _startNextRoundTimer() {
+    setTimeout(() => {
+      this.nowRound = {min: this.nowRound.min, sec: this.nowRound.sec - 1};
+      this.startTimer();
+    }, 1000);
+  }
+
+  private _isFinishWholeRound() {
+    return this.roundSrv.getNowRoundCount() > this.roundList.length;
+  }
+
+  private _isFinishWholeRepeat() {
+    return this.roundSrv.getNowRepeatCount() > this.wholeRepeatCount;
   }
 }

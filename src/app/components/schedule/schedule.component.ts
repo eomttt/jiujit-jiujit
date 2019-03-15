@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-schedule',
@@ -25,6 +25,9 @@ export class ScheduleComponent implements OnInit {
   get index() {
     return this._index;
   }
+
+  @Output()
+  remove = new EventEmitter();
 
   constructor() {
 
@@ -55,6 +58,10 @@ export class ScheduleComponent implements OnInit {
     }
 
     return min + 'min ' + sec + 'sec';
+  }
+
+  public removeRound() {
+    this.remove.emit(this.index);
   }
 
 }

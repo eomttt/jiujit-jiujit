@@ -1,15 +1,26 @@
-<ion-header>
-  <ion-toolbar>
-    <div (click)="clickBackButton()">
+<ion-header *ngIf="!showAddScheduleModal">
+  <ion-toolbar class="settingpage-toolbar-container">
+    <div class="settingpage-left-container" (click)="clickBackButton()">
       Back
+    </div>
+    <div class="settingpage-right-container">
+      <div class="settingpage-rc-left" (click)="subtractRepeat()">
+        -
+      </div>
+      <div class="settingpage-rc-mid">
+        Repeat: {{getRepeat()}}
+      </div>
+      <div class="settingpage-rc-right" (click)="addRepeat()">
+        +
+      </div>
     </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="!showAddScheduleModal">
   <div class="setting-schedule-container">
     <div class="setting-schedule-content" *ngFor="let round of rounds.list; let i = index">
-      <app-schedule [round]=round [index]=i></app-schedule>
+      <app-schedule [round]=round [index]=i (remove)=removeSchedule($event)></app-schedule>
     </div>
   </div>
   <div class="setting-set-schedule-button" (click)="addRound()">
@@ -22,4 +33,6 @@
 </ion-content>
 <div class="block-loading-view" *ngIf="showAddScheduleModal">
 </div>
-<app-schedule-add (setSchedule)="addSchedule($event)" (cancel)="closeScheduleModal()" *ngIf="showAddScheduleModal"></app-schedule-add>
+<ion-content *ngIf="showAddScheduleModal">
+  <app-schedule-add (setSchedule)="addSchedule($event)" (cancel)="closeScheduleModal()"></app-schedule-add>
+</ion-content>

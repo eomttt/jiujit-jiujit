@@ -1,13 +1,10 @@
 .schedule-add-container {
-  width: 70%;
-  height: 15em;
+  width: 100%;
   position: absolute;
   background-color: white;
-  top: 50%;
+  top: 10%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: .5em;
-  box-shadow: 1px 1px 1px black;
+  transform: translateX(-50%);
 }
 
 .schedule-add-content {
@@ -30,6 +27,7 @@
 
 .schedule-add-time-text {
   width: 3em;
+  margin-right: 1em;
   display: inline-block;
 }
 
@@ -43,9 +41,7 @@
   white-space: nowrap;
   height: 3em;
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  border-top: 1px solid black;
+  margin-top: 10%;
 }
 
 .schedule-add-cc-bottom {
@@ -53,19 +49,26 @@
 }
 
 .schedule-add-cb-left {
-  width: 50%;
+  width: 40%;
+  margin-left: 5%;
   height: 100%;
   float: left;
   position: relative;
   display: inline-block;
-  border-right: 1px solid black;
+  border-radius: .5em;
+  background-color: yellow;
+  box-shadow: 1px 1px 3px black;
 }
 
 .schedule-add-cb-right {
-  width: 50%;
+  width: 40%;
+  margin-left: 10%;
   height: 100%;
   position: relative;
   display: inline-block;
+  border-radius: .5em;
+  background-color: green;
+  box-shadow: 1px 1px 3px black;
 }
 
 .schedule-add-cb-text {
@@ -75,3 +78,21 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
+.schedule-add-time-i-input {
+  height: 2em;
+}
+
+.schedule-att-min {
+/*   color: yellow;
+  font-weight: bolder; */
+}
+
+.schedule-att-sec {
+/*   color: green;
+  font-weight: bolder; */
+}
+
+
+
+

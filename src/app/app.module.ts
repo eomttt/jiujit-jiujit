@@ -6,6 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
+import { Media } from '@ionic-native/media/ngx';
+import { Vibration } from '@ionic-native/vibration/ngx';
+import { NativeAudio } from '@ionic-native/native-audio/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +25,10 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [
     StatusBar,
     SplashScreen,
+    MobileAccessibility,
+    Media,
+    Vibration,
+    NativeAudio,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

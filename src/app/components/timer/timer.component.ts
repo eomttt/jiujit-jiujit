@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+import { NativeAudio } from '@ionic-native/native-audio/ngx';
+import { Vibration } from '@ionic-native/vibration/ngx';
+
 @Component({
   selector: 'app-timer',
   templateUrl: './timer.component.html',
@@ -39,10 +42,15 @@ export class TimerComponent implements OnInit {
   viewTimer = null;
   viewTime = null;
 
-  constructor() { }
+  constructor(private nativeAudioPlgn: NativeAudio,
+              private vibrationPlgn: Vibration) { }
 
   ngOnChanges(changes) {
+    console.log('Timer changes', changes.roundInfo);
     if (this.ngInit) {
+      if (!!changes.roundInfo) {
+        this._calculateViewTime();
+      }
       this._controlTime();
     }
   }
@@ -50,8 +58,14 @@ export class TimerComponent implements OnInit {
   ngOnInit() {
     this.ngInit = true;
     this._initTime();
+
+    this._setAlarmFile();
   }
 
+  private _setAlarmFile() {
+    this.nativeAudioPlgn.preloadSimple('longBeep', 'assets/file/long_beep.mp3');
+    this.nativeAudioPlgn.preloadSimple('shortBeep', 'assets/file/short_beep.mp3');
+  }
 
   /*
    * private function
@@ -83,19 +97,31 @@ export class TimerComponent implements OnInit {
   }
 
   private _checkTimeout() {
-    if (this.time === 0) {
-      this._timeoutTimer();
-      return;
-    }
-
     this.time = this.time - 1;
     this._setViewTime();
+
+    if (this.time < 0) {
+      this._timeoutTimer();
+      return;
+    } else if (this.time === 0) {
+      this._playLongAlarm();
+    } else if (this.time < 4) {
+      this._playShortAlarm();
+    }
+  }
+
+  private _playLongAlarm() {
+    this.nativeAudioPlgn.play('longBeep');
+    this.vibrationPlgn.vibrate(1000);
+  }
+
+  private _playShortAlarm() {
+    this.nativeAudioPlgn.play('shortBeep');
+    this.vibrationPlgn.vibrate(500);
   }
 
   private _timeoutTimer() {
     this.timeout.emit();
-
-    // TO DO: Add Alarm
   }
 
   private _startTimer() {
@@ -129,10 +155,14 @@ export class TimerComponent implements OnInit {
   private _initTime() {
     console.log('Init time', this.roundInfo);
     if (!!this.roundInfo) {
-      this.time = parseInt(this.roundInfo.min) * 60 + parseInt(this.roundInfo.sec);
-
-      this._setViewTime();
+      this._calculateViewTime();
     }
+  }
+
+  private _calculateViewTime() {
+    this.time = parseInt(this.roundInfo.min) * 60 + parseInt(this.roundInfo.sec);
+
+    this._setViewTime();
   }
 
 }
