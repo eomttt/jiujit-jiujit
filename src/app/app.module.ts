@@ -10,6 +10,8 @@ import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 import { Media } from '@ionic-native/media/ngx';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { NativeAudio } from '@ionic-native/native-audio/ngx';
+import { AdMobFree } from '@ionic-native/admob-free/ngx';
+import { Insomnia } from '@ionic-native/insomnia/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +31,8 @@ import { AppRoutingModule } from './app-routing.module';
     Media,
     Vibration,
     NativeAudio,
+    AdMobFree,
+    Insomnia,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

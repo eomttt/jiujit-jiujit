@@ -67,11 +67,11 @@
 
 .main-score {
   position: absolute;
-  font-size: 5em;
+  font-size: 4em;
 }
 
 .ms-sub-score {
-  font-size: 3em;
+  font-size: 2em;
 }
 
 .ms-left {
@@ -82,14 +82,14 @@
 
 .ms-sub-left-left {
   top: 72.5%;
-  left: 40%;
+  left: 45%;
   color: blue;
   transform: translate(-50%, -50%);
 }
 
 .ms-sub-left-right {
   top: 72.5%;
-  left: 70%;
+  left: 65%;
   color: red;
   transform: translate(-50%, -50%);
 }
@@ -102,14 +102,14 @@
 
 .ms-sub-right-left {
   top: 72.5%;
-  left: 30%;
+  left: 35%;
   color: blue;
   transform: translate(-50%, -50%);
 }
 
 .ms-sub-right-right {
   top: 72.5%;
-  left: 60%;
+  left: 55%;
   color: red;
   transform: translate(-50%, -50%);
 }
@@ -151,7 +151,7 @@
 
 .main-round-container {
   position: absolute;
-  top: 7%;
+  top: 1%;
   left: 50%;
   transform: translateX(-50%);
   font-size: 2em;

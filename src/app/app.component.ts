@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
+import { AdMobFree } from '@ionic-native/admob-free/ngx';
+import { Insomnia } from '@ionic-native/insomnia/ngx';
 
 import { RoundService } from './services/round.service';
 
@@ -13,6 +15,11 @@ import { RoundService } from './services/round.service';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+
+  PUBLIC_MODE = false;
+
+  bannerId: any = null;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -21,6 +28,8 @@ export class AppComponent {
     private router: Router,
     private navCtrl: NavController,
     private mobileAccessibility: MobileAccessibility,
+    private admobFree: AdMobFree,
+    private insomnia: Insomnia,
     private roundSrv: RoundService
   ) {
     this.initializeApp();
@@ -64,10 +73,45 @@ export class AppComponent {
     this.mobileAccessibility.usePreferredTextZoom(false);
   }
 
+  private _setAdmob() {
+    if (this.platform.is('android')) {
+      this.bannerId = 'ca-app-pub-3940256099942544/6300978111';
+    } else if (this.platform.is('ios')) {
+      this.bannerId = 'ca-app-pub-3940256099942544/6300978111';
+    }
+
+    if (this.PUBLIC_MODE) {
+      if (this.platform.is('android')) {
+        this.bannerId = 'ca-app-pub-9152190009267204/4531117007';
+      } else if (this.platform.is('ios')) {
+        this.bannerId = 'ca-app-pub-9152190009267204/4531117007';
+      }
+    }
+
+    const bannerConfig = {
+      id: this.bannerId,
+      isTesting: false,
+    };
+
+    this.admobFree.banner.config(bannerConfig);
+    this.admobFree.banner.prepare().then(() => {
+      console.log('Banner prepared.');
+    }).catch((error) => {
+      console.log('Error to prepare Banner. ', error);
+    });
+  }
+
+  private _keepAwakeApp() {
+    this.insomnia.keepAwake();
+  }
+
   private async _active() {
+    this._keepAwakeApp();
     this._setLandscapeView();
     this._setBackButtonEvent();
     this._setScreenViewPort();
+    this._setAdmob();
+
     await this._setRounds();
 
     console.log('Open main page');

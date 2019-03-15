@@ -93,4 +93,8 @@
     </plugin>
     <plugin name="cordova-plugin-vibration" spec="3.1.0" />
     <plugin name="cordova-plugin-nativeaudio" spec="3.0.9" />
+    <plugin name="cordova-plugin-admob-free" spec="0.25.0">
+        <variable name="ADMOB_APP_ID" value="pub-9152190009267204" />
+    </plugin>
+    <plugin name="cordova-plugin-insomnia" spec="4.3.0" />
 </widget>
