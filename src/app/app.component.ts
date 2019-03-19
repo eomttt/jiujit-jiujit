@@ -16,9 +16,10 @@ import { RoundService } from './services/round.service';
 })
 export class AppComponent {
 
-  PUBLIC_MODE = false;
+  PUBLIC_MODE = true;
 
   bannerId: any = null;
+  interstitialId: any = null;
 
   constructor(
     private platform: Platform,
@@ -76,15 +77,19 @@ export class AppComponent {
   private _setAdmob() {
     if (this.platform.is('android')) {
       this.bannerId = 'ca-app-pub-3940256099942544/6300978111';
+      this.interstitialId = 'ca-app-pub-3940256099942544/1033173712';
     } else if (this.platform.is('ios')) {
       this.bannerId = 'ca-app-pub-3940256099942544/6300978111';
+      this.interstitialId = 'ca-app-pub-3940256099942544/4411468910';
     }
 
     if (this.PUBLIC_MODE) {
       if (this.platform.is('android')) {
         this.bannerId = 'ca-app-pub-9152190009267204/4531117007';
+        this.interstitialId = 'ca-app-pub-9152190009267204/4531117007';
       } else if (this.platform.is('ios')) {
         this.bannerId = 'ca-app-pub-9152190009267204/4531117007';
+        this.interstitialId = 'ca-app-pub-9152190009267204/4531117007';
       }
     }
 
@@ -111,10 +116,7 @@ export class AppComponent {
     this._setBackButtonEvent();
     this._setScreenViewPort();
     this._setAdmob();
-
     await this._setRounds();
-
-    console.log('Open main page');
 
     this._openMainPage();
   }
