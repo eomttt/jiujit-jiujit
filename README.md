@@ -1,2 +1,2 @@
 # jiujit-jiujit
-Jiu-jitsu timer by ionic
+Jiu-jitsu timer by ionic/cordova
